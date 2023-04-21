@@ -1,6 +1,7 @@
-import { Controller, Post, UseGuards, Request } from "@nestjs/common";
+import { Controller, Post, UseGuards, Request, Get, Res } from "@nestjs/common";
 import { AuthService } from "./auth.service";
 import { AuthGuard } from "@nestjs/passport";
+import { Response } from "express";
 
 @Controller('auth')
 export class AuthController {
@@ -9,7 +10,15 @@ export class AuthController {
 
   @UseGuards(AuthGuard('local'))
   @Post('signin')
-  async signIn(@Request() req){
+  signIn(@Request() req, @Res() res: Response){
+    const jwt = req.user;
+    res.setHeader('Set-Cookie', [jwt]).json();
+    return req.user;
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Get('profile')
+  profile(@Request() req){
     return req.user;
   }
 }
