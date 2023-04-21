@@ -21,17 +21,13 @@ export class CategoriesService {
     return this.categoryRepository.find();
   }
 
-/*  findOne(id: number) {
-    return `This action returns a #${id} category`;
-  }*/
-
-  async findById(id:number):Promise<Category>{
+  async findOne(id: number): Promise <Category> {
     return this.categoryRepository.findOneBy({id});
   }
 
-  async update(id: number, updateCategoryDto: UpdateCategoryDto) {
+  async update(id: number, updateCategoryDto: UpdateCategoryDto): Promise <Category> {
     await this.categoryRepository.update(id, updateCategoryDto);
-    return this.findById(id);
+    return this.findOne(id);
   }
 
   remove(id: number): Promise<DeleteResult> {
