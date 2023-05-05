@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Blog } from "../blog/entities/blog.entity";
+import { Blog } from "./blog.entity";
 import { Post } from "@nestjs/common";
 
 @Entity('users')

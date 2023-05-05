@@ -7,8 +7,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from "typeorm";
-import { User } from "../../entities/user.entity";
-import { Category } from "../../entities/category.entity";
+import { User } from "./user.entity";
+import { Category } from "./category.entity";
 
 @Entity('blogs')
 export class Blog {
